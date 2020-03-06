@@ -16,7 +16,6 @@ except ImportError:  # pragma: no cover
 from django.template import TemplateDoesNotExist
 from django.template.loaders.base import Loader as BaseLoader
 from django.utils._os import safe_join
-from django.utils._os import upath
 from django.utils.functional import cached_property
 
 
@@ -64,7 +63,6 @@ class Loader(BaseLoader):
             templates_dir = os.path.join(
                 getattr(app_config, 'path', '/'), 'templates')
             if os.path.isdir(templates_dir):
-                templates_dir = upath(templates_dir)
                 app_templates_dirs[app_config.name] = templates_dir
                 app_templates_dirs[app_config.label] = templates_dir
         return app_templates_dirs
